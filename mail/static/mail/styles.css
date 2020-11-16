@@ -5,3 +5,8 @@ textarea {
 .gap-10 {
 	padding: 10px;
 }
+
+.mailList {
+	border-style: solid;
+	margin-bottom: 10px;
+}

@@ -31,15 +31,25 @@ function load_mailbox(mailbox) {
 
   // Show the mailbox name
   document.querySelector('#emails-view').innerHTML = `<h3>${mailbox.charAt(0).toUpperCase() + mailbox.slice(1)}</h3>`;
-  
-  fetch('/emails/inbox')
-.then(response => response.json())
-.then(email => {
-    // Print email
-    console.log(email);
 
-    // ... do something else with email ...
-});
+  
+  
+  fetch('/emails/sent')
+  .then(response => response.json())
+  .then(email => {
+    
+    data = email;
+    console.log(data);
+    let mainContainer = document.getElementById("emails-view");
+
+    for (let i = 0; i < data.length; i++) {
+      let div = document.createElement("div");
+      div.className = 'mailList';
+
+      div.innerHTML = 'Name: ' + data[i].recipients + ', Subject: ' + data[i].subject;
+      mainContainer.appendChild(div);
+    }
+  });
 
 }
 
@@ -49,10 +59,10 @@ function post_mail() {
   fetch('/emails', {
     method: 'POST', 
     body: JSON.stringify({
-      recipients: 'test@example.com',
-      subject: 'First Test',
-      body: 'This is a test'
-    })  
+      "recipients": "test@example.com",
+      "subject": "First Test",
+      "body": "This is a test"
+    })
   })
   .then(response => response.json())
   .then(result => {
