@@ -37,9 +37,40 @@ function show_mail(mail_id) {
 
     let data = email;
     let mainContainer = document.querySelector('#mail-view');
+    mainContainer.innerHTML = "";
 
-    console.log(data);
-    mainContainer.innerHTML = data.sender;
+    const neededInfo = [data.sender, data.recipients, data.subject, data.timestamp, data.body];
+
+
+    let div = document.createElement('div');
+    div.className = 'mailInfo';
+    div.innerHTML = `
+      <table>
+        <tr>
+          <th>From: <th>
+          <td>${data.sender}</td>
+        </tr>
+      
+        <tr>
+          <th>Το: <th>
+          <td>${data.recipients}</td>
+        </tr>
+
+        <tr>
+          <th>Subject: <th>
+          <td>${data.subject}</td>
+        </tr>
+
+        <tr>
+          <th>Sent: <th>
+          <td>${data.timestamp}</td>
+        </tr>
+      </table>
+      <hr>
+      <h6>${data.body}</h6>
+    `
+
+    mainContainer.appendChild(div);
   });
 }
 
@@ -56,7 +87,6 @@ function load_mailbox(mailbox) {
 
   fetch('/emails/' + mailbox)
   .then(response => response.json())
-
   .then(email => {
     
     data = email;
@@ -102,6 +132,6 @@ function post_mail() {
   .then(result => {
     //Print result
     console.log(result);
-  });
 
+  });
 }
