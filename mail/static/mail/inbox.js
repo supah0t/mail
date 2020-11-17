@@ -15,6 +15,7 @@ function compose_email() {
 
   // Show compose view and hide other views
   document.querySelector('#emails-view').style.display = 'none';
+  document.querySelector('#mail-view').style.display = 'none';
   document.querySelector('#compose-view').style.display = 'block';
 
   // Clear out composition fields
@@ -23,30 +24,58 @@ function compose_email() {
   document.querySelector('#compose-body').value = '';
 }
 
+function show_mail(mail_id) {
+
+  //Show specific mail view and hide other views
+  document.querySelector('#emails-view').style.display = 'none';
+  document.querySelector('#compose-view').style.display = 'none';
+  document.querySelector('#mail-view').style.display = 'block';
+
+  fetch('/emails/' + mail_id)
+  .then(response => response.json())
+  .then(email => {
+
+    let data = email;
+    let mainContainer = document.querySelector('#mail-view');
+
+    console.log(data);
+    mainContainer.innerHTML = data.sender;
+  });
+}
+
 function load_mailbox(mailbox) {
-  
+
   // Show the mailbox and hide other views
   document.querySelector('#emails-view').style.display = 'block';
   document.querySelector('#compose-view').style.display = 'none';
+  document.querySelector('#mail-view').style.display = 'none';
 
   // Show the mailbox name
   document.querySelector('#emails-view').innerHTML = `<h3>${mailbox.charAt(0).toUpperCase() + mailbox.slice(1)}</h3>`;
 
-  
-  
-  fetch('/emails/sent')
+
+  fetch('/emails/' + mailbox)
   .then(response => response.json())
+
   .then(email => {
     
     data = email;
-    console.log(data);
     let mainContainer = document.getElementById("emails-view");
 
     for (let i = 0; i < data.length; i++) {
       let div = document.createElement("div");
+      div.style = "cursor: pointer;"
       div.className = 'mailList';
 
-      div.innerHTML = 'Name: ' + data[i].recipients + ', Subject: ' + data[i].subject;
+
+      if (data[i].read === true && mailbox == "inbox") {
+        div.style.background = '#C7C6C6';
+      }
+
+      div.innerHTML = `<table class="mailTable"><tr> <th class="firstElement">${data[i].recipients}</th> <td>${data[i].subject}</td> <td class="timeField">${data[i].timestamp}</td> </tr></table>`
+      
+      div.addEventListener('click', () => show_mail(data[i].id));
+
       mainContainer.appendChild(div);
     }
   });
@@ -55,13 +84,18 @@ function load_mailbox(mailbox) {
 
 function post_mail() {
 
+  //Gets form values
+  const recipients = document.querySelector('#compose-recipients').value;
+  const subject = document.querySelector('#compose-subject').value;
+  const body = document.querySelector('#compose-body').value;
+
   //Posts mail to /emails route.
   fetch('/emails', {
     method: 'POST', 
     body: JSON.stringify({
-      "recipients": "test@example.com",
-      "subject": "First Test",
-      "body": "This is a test"
+      "recipients": recipients,
+      "subject": subject,
+      "body": body
     })
   })
   .then(response => response.json())
