@@ -24,7 +24,7 @@ function compose_email() {
   document.querySelector('#compose-body').value = '';
 }
 
-function show_mail(mail_id) {
+function show_mail(mail_id, mailbox) {
 
   //Show specific mail view and hide other views
   document.querySelector('#emails-view').style.display = 'none';
@@ -38,9 +38,9 @@ function show_mail(mail_id) {
     let data = email;
     let mainContainer = document.querySelector('#mail-view');
     mainContainer.innerHTML = "";
+    console.log(data);
 
-    const neededInfo = [data.sender, data.recipients, data.subject, data.timestamp, data.body];
-
+    let archiveButton = mailbox === "inbox" ? true : false;
 
     let div = document.createElement('div');
     div.className = 'mailInfo';
@@ -66,12 +66,38 @@ function show_mail(mail_id) {
           <td>${data.timestamp}</td>
         </tr>
       </table>
+      ${ archiveButton ? `
+        <button id="archive" class="btn btn-sm btn-warning">Archive</button>
+      ` : `
+        <div class="gap-10"></div>
+      `}
       <hr>
       <h6>${data.body}</h6>
     `
 
+    if (archiveButton == true) {
+      div.querySelector('#archive').addEventListener('click', () => 
+        fetch('/emails/' + mail_id, {
+          method: 'PUT',
+          body: JSON.stringify({
+            archived: true
+          })
+        })
+        .then(location.reload())
+      )
+    }
+
     mainContainer.appendChild(div);
   });
+
+  fetch('emails/' + mail_id, {
+    method: 'PUT',
+    body: JSON.stringify({
+      read: true
+    })
+  })
+
+
 }
 
 function load_mailbox(mailbox) {
@@ -104,7 +130,7 @@ function load_mailbox(mailbox) {
 
       div.innerHTML = `<table class="mailTable"><tr> <th class="firstElement">${data[i].recipients}</th> <td>${data[i].subject}</td> <td class="timeField">${data[i].timestamp}</td> </tr></table>`
       
-      div.addEventListener('click', () => show_mail(data[i].id));
+      div.addEventListener('click', () => show_mail(data[i].id, mailbox));
 
       mainContainer.appendChild(div);
     }

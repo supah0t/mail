@@ -1,0 +1,276 @@
+{
+	"auto_complete":
+	{
+		"selected_items":
+		[
+			[
+				"getElemen",
+				"getElementsByClassName\t( classNames: DOMString ): HTMLCollection Document"
+			],
+			[
+				"recipien",
+				"recipients"
+			],
+			[
+				"pre",
+				"prefix\t: DOMString Element"
+			],
+			[
+				"pri",
+				"print\t(): void Window"
+			],
+			[
+				"margin",
+				"margin-top\tproperty"
+			],
+			[
+				"for",
+				"for\tkeyword"
+			]
+		]
+	},
+	"buffers":
+	[
+	],
+	"build_system": "",
+	"build_system_choices":
+	[
+	],
+	"build_varint": "",
+	"command_palette":
+	{
+		"height": 0.0,
+		"last_filter": "",
+		"selected_items":
+		[
+			[
+				"packages",
+				"Preferences: Package Control Settings"
+			],
+			[
+				"install",
+				"Package Control: Install Package"
+			],
+			[
+				"termnal",
+				"Terminal: Open"
+			],
+			[
+				"terminal",
+				"Preferences: Terminal Settings – User"
+			],
+			[
+				"settings",
+				"Preferences: Settings"
+			],
+			[
+				"pack",
+				"Package Control: Remove Package"
+			],
+			[
+				"Package Control:",
+				"Package Control: Remove Package"
+			],
+			[
+				"key",
+				"Preferences: Key Bindings"
+			],
+			[
+				"intsall",
+				"Package Control: Install Package"
+			],
+			[
+				"select skin",
+				"UI: Select Skin"
+			],
+			[
+				"preferences",
+				"Preferences: Key Bindings"
+			],
+			[
+				"activate",
+				"Material Theme: Activate theme"
+			],
+			[
+				"package control: install",
+				"Package Control: Install Package"
+			],
+			[
+				"theme",
+				"UI: Select Theme"
+			],
+			[
+				"install package",
+				"Package Control: Install Package"
+			]
+		],
+		"width": 0.0
+	},
+	"console":
+	{
+		"height": 265.0,
+		"history":
+		[
+			"ls",
+			"checkversion.py",
+			"ls"
+		]
+	},
+	"distraction_free":
+	{
+		"menu_visible": true,
+		"show_minimap": false,
+		"show_open_files": false,
+		"show_tabs": false,
+		"side_bar_visible": false,
+		"status_bar_visible": false
+	},
+	"file_history":
+	[
+		"/C/Users/Ody/Desktop/imageDownloader.js",
+		"/C/Users/Ody/AppData/Roaming/Sublime Text 3/Packages/User/ColorPicker.sublime-settings",
+		"/C/Users/Ody/AppData/Roaming/Sublime Text 3/Packages/ColorPicker/ColorPicker.sublime-settings",
+		"/C/Users/Ody/Desktop/prog/CS50web/project3/mail/mail/templates/mail/layout.html",
+		"/C/Users/Ody/AppData/Roaming/Sublime Text 3/Packages/Terminal/Terminal.sublime-settings",
+		"/C/Users/Ody/AppData/Roaming/Sublime Text 3/Packages/User/Terminal.sublime-settings",
+		"/C/Users/Ody/Desktop/prog/CS50web/project3/mail/mail/static/mail/styles.css",
+		"/C/Users/Ody/Desktop/prog/CS50web/project3/mail/mail/apps.py",
+		"/C/Users/Ody/Desktop/prog/CS50web/project3/mail/mail/models.py",
+		"/C/Users/Ody/Desktop/prog/CS50web/week6/TestApp/TestApp/urls.py",
+		"/C/Users/Ody/Desktop/prog/CS50web/week6/TestApp/infinitescroll/urls.py",
+		"/C/Users/Ody/Desktop/prog/CS50web/week6/infinitescroll/infinitescroll/urls.py",
+		"/C/Users/Ody/Desktop/prog/CS50web/week6/infinitescroll/infinitescroll/views.py",
+		"/C/Users/Ody/AppData/Roaming/Sublime Text 3/Packages/auto_close/README.md",
+		"/C/Users/Ody/AppData/Roaming/Sublime Text 3/Packages/auto_close/Default (Windows).sublime-keymap",
+		"/C/Users/Ody/Desktop/prog/CS50web/week6/hello.html",
+		"/C/Users/Ody/Desktop/prog/CS50web/week6/singlepage.js"
+	],
+	"find":
+	{
+		"height": 28.0
+	},
+	"find_in_files":
+	{
+		"height": 107.0,
+		"where_history":
+		[
+		]
+	},
+	"find_state":
+	{
+		"case_sensitive": false,
+		"find_history":
+		[
+		],
+		"highlight": true,
+		"in_selection": false,
+		"preserve_case": false,
+		"regex": false,
+		"replace_history":
+		[
+		],
+		"reverse": false,
+		"show_context": true,
+		"use_buffer2": true,
+		"whole_word": false,
+		"wrap": true
+	},
+	"groups":
+	[
+		{
+			"sheets":
+			[
+			]
+		}
+	],
+	"incremental_find":
+	{
+		"height": 28.0
+	},
+	"input":
+	{
+		"height": 41.0
+	},
+	"layout":
+	{
+		"cells":
+		[
+			[
+				0,
+				0,
+				1,
+				1
+			]
+		],
+		"cols":
+		[
+			0.0,
+			1.0
+		],
+		"rows":
+		[
+			0.0,
+			1.0
+		]
+	},
+	"menu_visible": true,
+	"output.SublimeLinter":
+	{
+		"height": 0.0
+	},
+	"output.find_results":
+	{
+		"height": 0.0
+	},
+	"pinned_build_system": "Packages/Python/Python.sublime-build",
+	"project": "db.sublime-project",
+	"replace":
+	{
+		"height": 52.0
+	},
+	"save_all_on_build": true,
+	"select_file":
+	{
+		"height": 0.0,
+		"last_filter": "",
+		"selected_items":
+		[
+			[
+				"inbox.js",
+				"mail\\static\\mail\\inbox.js"
+			]
+		],
+		"width": 0.0
+	},
+	"select_project":
+	{
+		"height": 0.0,
+		"last_filter": "",
+		"selected_items":
+		[
+		],
+		"width": 0.0
+	},
+	"select_symbol":
+	{
+		"height": 0.0,
+		"last_filter": "",
+		"selected_items":
+		[
+		],
+		"width": 0.0
+	},
+	"selected_group": 0,
+	"settings":
+	{
+	},
+	"show_minimap": true,
+	"show_open_files": false,
+	"show_tabs": true,
+	"side_bar_visible": true,
+	"side_bar_width": 215.0,
+	"status_bar_visible": true,
+	"template_settings":
+	{
+	}
+}
