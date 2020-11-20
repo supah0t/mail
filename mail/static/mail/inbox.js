@@ -19,9 +19,27 @@ function compose_email() {
   document.querySelector('#compose-view').style.display = 'block';
 
   // Clear out composition fields
+  document.querySelector('#compose-recipients').disabled = false;
   document.querySelector('#compose-recipients').value = '';
   document.querySelector('#compose-subject').value = '';
   document.querySelector('#compose-body').value = '';
+}
+
+function compose_reply(data) {
+    // Show compose view and hide other views
+  document.querySelector('#emails-view').style.display = 'none';
+  document.querySelector('#mail-view').style.display = 'none';
+  document.querySelector('#compose-view').style.display = 'block';
+
+  // Clear out composition fields
+  document.querySelector('#compose-recipients').value = data.sender;
+  document.querySelector('#compose-recipients').disabled = true;
+  if (document.querySelector('#compose-subject').value.substring(0, 5) == 'Re: ') {
+    document.querySelector('#compose-subject').value = data.subject;  
+  } else {
+    document.querySelector('#compose-subject').value = 'Re: ' + data.subject;
+  }
+  document.querySelector('#compose-body').value = `\n \n------------------------------------- \n On ${data.timestamp}, ${data.sender} wrote: \n${data.body}`
 }
 
 function show_mail(mail_id, mailbox) {
@@ -38,9 +56,11 @@ function show_mail(mail_id, mailbox) {
     let data = email;
     let mainContainer = document.querySelector('#mail-view');
     mainContainer.innerHTML = "";
-    console.log(data);
 
     let archiveButton = mailbox === "inbox" ? true : false;
+    let unarchiveButton = mailbox === "archive" ? true: false;
+
+    console.log("hey");
 
     let div = document.createElement('div');
     div.className = 'mailInfo';
@@ -66,14 +86,25 @@ function show_mail(mail_id, mailbox) {
           <td>${data.timestamp}</td>
         </tr>
       </table>
+      <div class="gap-10"></div>
+
+      <button id="reply" class="btn btn-sm btn-primary">Reply</button>
       ${ archiveButton ? `
         <button id="archive" class="btn btn-sm btn-warning">Archive</button>
-      ` : `
-        <div class="gap-10"></div>
+      ` :`
+
+      `}
+
+      ${ unarchiveButton ? `
+        <button id="unarchive" class="btn btn-sm btn-warning">Unarchive</button>
+      ` :`
+
       `}
       <hr>
-      <h6>${data.body}</h6>
+      <h6 style="white-space: pre-wrap;">${data.body}</h6>
     `
+
+    div.querySelector('#reply').addEventListener('click', () => compose_reply(data))
 
     if (archiveButton == true) {
       div.querySelector('#archive').addEventListener('click', () => 
@@ -81,6 +112,18 @@ function show_mail(mail_id, mailbox) {
           method: 'PUT',
           body: JSON.stringify({
             archived: true
+          })
+        })
+        .then(location.reload())
+      )
+    }
+
+    if (unarchiveButton == true) {
+      div.querySelector('#unarchive').addEventListener('click', () => 
+        fetch('/emails/' + mail_id, {
+          method: 'PUT',
+          body: JSON.stringify({
+            archived: false
           })
         })
         .then(location.reload())
